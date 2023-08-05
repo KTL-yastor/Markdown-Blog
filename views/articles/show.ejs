@@ -12,6 +12,9 @@
     <div class="text-muted mb-2"><%= article.createdAt.toLocaleDateString() %></div>
     <a href="/" class="btn btn-secondary">Back</a>
     <a href="/articles/edit/<%= article.id %>" class="btn btn-primary">Edit</a>
+    <form action="/articles/delete/<%= article.id %>" method="post" style="display: inline-block">
+        <button class="btn btn-danger">Delete</button>
+     </form>
     <div class="card mb-4">
         <div class="card-body">
             <p class="card-text"><%= article.description %></p>
