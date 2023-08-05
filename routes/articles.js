@@ -10,9 +10,13 @@ router.get('/new', (req, res) => {
 
 router.get('/:slug', async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug }); // szukamy artykułu po id
-    if (article == null) res.redirect('/'); // jeśli nie ma artykułu, to przekierowujemy na stronę główną
-    res.render('articles/show', { article: article }); // jeśli jest artykuł, to renderujemy stronę show.ejs z folderu articles, przekazujemy artykuł i tytuł artykułu
-});
+    if (article == null) {res.redirect('/');}// jeśli nie ma artykułu, to przekierowujemy na stronę główną 
+    else {
+        console.log(article.title);
+        res.render('articles/show', { article: article }); // jeśli jest artykuł, to renderujemy stronę show.ejs z folderu articles, przekazujemy artykuł i tytuł artykułu
+  
+    }
+}); 
 
 router.get('/edit/:id', async (req, res) => {
 
